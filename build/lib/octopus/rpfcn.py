@@ -23,6 +23,7 @@ def print_ebcdic(filename):
     fseis.close()
 
 def plot_seis_locs(filename,mult):
+    fseis = segyio.open(filename, ignore_geometry=True)
 
     groupX = fseis.attributes(segyio.TraceField.GroupX)[:]*mult
     groupY = fseis.attributes(segyio.TraceField.GroupY)[:]*mult
@@ -33,3 +34,4 @@ def plot_seis_locs(filename,mult):
     plt.xlabel('Easting (m)')
     plt.ylabel('Northing (m)')
     plt.show()
+    fseis.close()
